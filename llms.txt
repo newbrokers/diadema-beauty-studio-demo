@@ -16,7 +16,7 @@ Chrysanthou Mylona 5, Limassol 3030
 
 ## Contact
 Phone: +357 99 878958
-Google Maps: https://www.google.com/maps/dir/?api=1&destination=34.6864239,33.0519665
+Google Maps: https://www.google.com/maps/search/?api=1&query=34.6864239,33.0519665
 
 ## Key Facts
 - 5.0-star Google rating from 32 reviews

@@ -10,7 +10,7 @@ last_updated: 2026-08-31
 Diadema pairs a warm, Hollywood-mirror studio with a perfect 5.0 rating across 32 reviews — color, cuts, and manicures in one relaxed space.
 
 **Call to book:** +357 99 878958
-**Get directions:** https://www.google.com/maps/dir/?api=1&destination=34.6864239,33.0519665
+**Google Maps:** https://www.google.com/maps/search/?api=1&query=34.6864239,33.0519665
 
 ## Services
 Sample categories — replace with the real menu before publishing:
@@ -36,7 +36,7 @@ point to show what a real site could look like.
 
 Chrysanthou Mylona 5, Limassol 3030
 Phone: +357 99 878958
-Maps: https://www.google.com/maps/dir/?api=1&destination=34.6864239,33.0519665
+Maps: https://www.google.com/maps/search/?api=1&query=34.6864239,33.0519665
 
 ---
 Concept design built from Diadema Beauty Studio's public Google Business listing — not
