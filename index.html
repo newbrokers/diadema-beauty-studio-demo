@@ -93,6 +93,24 @@
   }
   .hero-inner { padding: 60px 24px 56px; width: 100%; }
 
+  /* ScrollScrub hero variant (video sites only — inert for image-hero sites) */
+  .hero-scroll-wrapper { position: relative; height: 240vh; }
+  .hero-pinned { position: sticky; top: 0; height: 100vh; min-height: 0; overflow: hidden; background: none; }
+  #hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; background: #1a1512; z-index: 0; }
+  .hero-gradient {
+    position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    background: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.55) 100%);
+  }
+  .hero-pinned .hero-inner { position: relative; z-index: 2; }
+  .hero-pinned .badge { z-index: 3; }
+  @media (max-width: 768px) {
+    .hero-scroll-wrapper { height: 200vh; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-scroll-wrapper { height: auto; }
+    .hero-pinned { position: relative; }
+  }
+
   @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(14px); }
     to { opacity: var(--target-opacity, 1); transform: translateY(0); }
@@ -251,9 +269,12 @@
     </div>
   </header>
 
-  <div class="hero">
-    <div class="badge">Concept design — not yet live</div>
-    <div class="hero-inner wrap">
+  <div class="hero-scroll-wrapper">
+    <section class="hero hero-pinned">
+      <canvas id="hero-canvas"></canvas>
+      <div class="hero-gradient"></div>
+      <div class="badge">Concept design — not yet live</div>
+      <div class="hero-inner wrap">
       <div class="eyebrow">Beauty Studio · Limassol</div>
       <h1>A calm, beautifully designed studio for hair &amp; nails</h1>
       <p>Diadema pairs a warm, Hollywood-mirror studio with a perfect 5.0 rating across 32 reviews — color, cuts, and manicures in one relaxed space.</p>
@@ -261,7 +282,8 @@
         <a class="btn-primary" href="#book">Book now</a>
         <a class="btn-ghost" href="https://www.google.com/maps/dir/?api=1&destination=Diadema+Beauty+Studio%2C+Chrysanthou+Mylona+5%2C+Limassol+3030" target="_blank" rel="noopener">Get directions</a>
       </div>
-    </div>
+      </div>
+    </section>
   </div>
 
   <div class="trust wrap">
@@ -374,5 +396,84 @@
     </div>
   </footer>
 
+  <script>
+(function () {
+  var FRAME_COUNT = 100;
+  function framePath(i) { return "hero-frames/frame-" + String(i).padStart(3, '0') + ".jpg"; }
+
+  var wrapper = document.querySelector('.hero-scroll-wrapper');
+  var canvas = document.getElementById('hero-canvas');
+  if (!wrapper || !canvas) return;
+  var ctx = canvas.getContext('2d');
+  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var images = [];
+
+  function resizeCanvas() {
+    canvas.width = canvas.clientWidth;
+    canvas.height = canvas.clientHeight;
+  }
+
+  function drawFrame(index) {
+    var img = images[index];
+    if (!img || !img.complete || !img.naturalWidth) return;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    var canvasRatio = canvas.width / canvas.height;
+    var imgRatio = img.width / img.height;
+    var drawWidth, drawHeight, offsetX, offsetY;
+    if (imgRatio > canvasRatio) {
+      drawHeight = canvas.height; drawWidth = drawHeight * imgRatio;
+      offsetX = (canvas.width - drawWidth) / 2; offsetY = 0;
+    } else {
+      drawWidth = canvas.width; drawHeight = drawWidth / imgRatio;
+      offsetX = 0; offsetY = (canvas.height - drawHeight) / 2;
+    }
+    ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
+  }
+
+  function updateFrameFromScroll() {
+    var rect = wrapper.getBoundingClientRect();
+    var scrollableDistance = wrapper.offsetHeight - window.innerHeight;
+    if (scrollableDistance <= 0) { drawFrame(0); return; }
+    var progress = Math.min(Math.max(-rect.top / scrollableDistance, 0), 1);
+    var frameIndex = Math.min(FRAME_COUNT - 1, Math.floor(progress * FRAME_COUNT));
+    drawFrame(frameIndex);
+  }
+
+  var ticking = false;
+  function onScroll() {
+    if (!ticking) {
+      requestAnimationFrame(function () { updateFrameFromScroll(); ticking = false; });
+      ticking = true;
+    }
+  }
+
+  function init() {
+    resizeCanvas();
+    if (prefersReducedMotion) {
+      var img = new Image();
+      img.src = framePath(1);
+      img.onload = function () { images[0] = img; drawFrame(0); };
+      return;
+    }
+    for (var i = 1; i <= FRAME_COUNT; i++) {
+      (function (i) {
+        var img = new Image();
+        img.src = framePath(i);
+        img.onload = function () { if (i === 1) drawFrame(0); };
+        images[i - 1] = img;
+      })(i);
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', function () { resizeCanvas(); updateFrameFromScroll(); });
+    updateFrameFromScroll();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
 </body>
 </html>
