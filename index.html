@@ -185,6 +185,30 @@
   .rating-card .score { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 40px; }
   .rating-card .count { color: var(--muted); font-size: 14px; margin-top: 4px; font-family: system-ui, sans-serif; }
 
+  .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 20px; max-width: 720px; margin: 0 auto; }
+  .contact-card {
+    background: var(--card); border-radius: 16px; padding: 26px 24px;
+    border: 1px solid rgba(0,0,0,0.05); text-align: center;
+  }
+  .contact-label {
+    font-family: system-ui, sans-serif; font-size: 12px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 8px;
+  }
+  .contact-phone {
+    font-family: 'Cormorant Garamond', Georgia, serif; font-size: 22px; margin-bottom: 18px;
+  }
+  .contact-actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .whatsapp-btn {
+    background: #25d366; color: #fff; padding: 11px 18px;
+    border-radius: 999px; font-size: 14px; font-weight: 600;
+    font-family: system-ui, sans-serif; letter-spacing: 0.01em;
+    display: inline-flex; align-items: center; gap: 7px;
+    transition: transform 160ms var(--ease-out), opacity 160ms var(--ease-out);
+  }
+  .whatsapp-btn:active { transform: scale(0.97); }
+  .whatsapp-btn svg { width: 15px; height: 15px; flex-shrink: 0; }
+  .contact-actions .cta-btn { padding: 11px 18px; }
+
   .map-embed {
     max-width: 1000px; margin: 0 auto; border-radius: 18px; overflow: hidden;
     border: 1px solid rgba(0,0,0,0.08); box-shadow: 0 12px 32px rgba(0,0,0,0.06);
@@ -222,10 +246,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.1-7-11a7 7 0 0 1 14 0c0 4.9-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
           <span class="map-label">View on map</span>
         </a>
-        <a class="cta-btn" href="tel:+35799878958">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          <span class="call-label">Call</span><span class="phone-number">&nbsp;+357 99 878958</span>
-        </a>
+        <a class="cta-btn" href="#book"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="call-label">Book</span></a>
       </div>
     </div>
   </header>
@@ -237,7 +258,7 @@
       <h1>A calm, beautifully designed studio for hair &amp; nails</h1>
       <p>Diadema pairs a warm, Hollywood-mirror studio with a perfect 5.0 rating across 32 reviews — color, cuts, and manicures in one relaxed space.</p>
       <div class="hero-ctas">
-        <a class="btn-primary" href="tel:+35799878958">Call to book</a>
+        <a class="btn-primary" href="#book">Book now</a>
         <a class="btn-ghost" href="https://www.google.com/maps/dir/?api=1&destination=Diadema+Beauty+Studio%2C+Chrysanthou+Mylona+5%2C+Limassol+3030" target="_blank" rel="noopener">Get directions</a>
       </div>
     </div>
@@ -248,6 +269,35 @@
     <div class="item"><div class="num">32</div><div class="label">Google reviews</div></div>
     <div class="item"><div class="num">Limassol</div><div class="label">Location</div></div>
   </div>
+
+  
+  <section id="book">
+    <div class="section-head">
+      <div class="kicker">Book</div>
+      <h2>Book your visit</h2>
+      <p>Call or WhatsApp whichever team you need &mdash; both reply directly, no booking account required.</p>
+    </div>
+    <div class="contact-grid wrap">
+      
+      <div class="contact-card">
+        <div class="contact-label">Hair</div>
+        <div class="contact-phone">+357 99 878958</div>
+        <div class="contact-actions">
+          <a class="cta-btn" href="tel:+35799878958"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call</a>
+          <a class="whatsapp-btn" href="https://wa.me/35799878958" target="_blank" rel="noopener" aria-label="Message Diadema Beauty Studio on WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.9 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.13c-.24.68 -1.4 1.32-1.93 1.4-.5.08-1.11.11-1.8-.11-.42-.13-.96-.31-1.65-.6-2.9-1.25-4.8-4.18 -4.94-4.37-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.27-.29.58-.36.78-.36.2 0 .39 0 .56.01.18.01.42-.07.66.5.24.58.82 2 .89 2.15.07.15.12.32.02.51-.09.19 -.14.31-.28.48-.14.17-.29.38-.42.51-.14.14-.28.29-.12.57.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.28.14.44.12.6-.07.16-.19.68-.79.87-1.06.18-.27.36 -.22.6-.13.24.09 1.53.72 1.79.85.26.13.43.19.5.3.06.11.06.63-.18 1.31z"/></svg>WhatsApp</a>
+        </div>
+      </div>
+      
+      <div class="contact-card">
+        <div class="contact-label">Nails, Brows & Lip Blush</div>
+        <div class="contact-phone">+357 99 140154</div>
+        <div class="contact-actions">
+          <a class="cta-btn" href="tel:+35799140154"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call</a>
+          <a class="whatsapp-btn" href="https://wa.me/35799140154" target="_blank" rel="noopener" aria-label="Message Diadema Beauty Studio on WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.9 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.13c-.24.68 -1.4 1.32-1.93 1.4-.5.08-1.11.11-1.8-.11-.42-.13-.96-.31-1.65-.6-2.9-1.25-4.8-4.18 -4.94-4.37-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.27-.29.58-.36.78-.36.2 0 .39 0 .56.01.18.01.42-.07.66.5.24.58.82 2 .89 2.15.07.15.12.32.02.51-.09.19 -.14.31-.28.48-.14.17-.29.38-.42.51-.14.14-.28.29-.12.57.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.28.14.44.12.6-.07.16-.19.68-.79.87-1.06.18-.27.36 -.22.6-.13.24.09 1.53.72 1.79.85.26.13.43.19.5.3.06.11.06.63-.18 1.31z"/></svg>WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section>
     <div class="section-head">
@@ -309,7 +359,10 @@
       <div class="foot-col">
         <p>Visit us</p>
         <a href="https://www.google.com/maps/dir/?api=1&destination=Diadema+Beauty+Studio%2C+Chrysanthou+Mylona+5%2C+Limassol+3030" target="_blank" rel="noopener">Chrysanthou Mylona 5, Limassol 3030</a>
-        <a href="tel:+35799878958">+357 99 878958</a>
+        <a href="tel:+35799878958">Hair: +357 99 878958</a>
+        <a href="https://wa.me/35799878958" target="_blank" rel="noopener">Hair WhatsApp →</a>
+        <a href="tel:+35799140154">Nails, Brows & Lip Blush: +357 99 140154</a>
+        <a href="https://wa.me/35799140154" target="_blank" rel="noopener">Nails, Brows & Lip Blush WhatsApp →</a>
       </div>
       <div class="foot-col">
         <p>Find us</p>
